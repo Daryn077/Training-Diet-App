@@ -67,8 +67,7 @@ class ProfileScreen extends StatelessWidget {
             left: 0,
             right: 0,
             child: Container(
-
-              height: height,
+              height: height * 0.50,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -99,9 +98,23 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Expanded(
                     child: Container(
-                      color: Colors.blueAccent,
+                      margin: const EdgeInsets.only(bottom: 10, left: 32, right: 32),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(40)),
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            const Color(0xFF20008B),
+                            const Color(0xFF200087),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -131,29 +144,76 @@ class _MealCard extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(20)),
         elevation: 4,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Flexible(
                 fit: FlexFit.tight,
                 child: ClipRRect(
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
                   child: Image.asset(
                   meal.imagePath,
                   width: 150,
-                  fit: BoxFit.fitHeight,
+                  fit: BoxFit.fill,
                   ),
                 ),
             ),
             Flexible(
               fit: FlexFit.tight,
-                child: Column(
-                  children: [
-                    Text(meal.mealTime),
-                    Text(meal.name),
-                    Text(meal.kiloCaloriesBurnt),
-                    Text(meal.timeTaken),
-                    SizedBox(height: 16),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 12.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(height: 5),
+                      Text(
+                        meal.mealTime,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                          color: Colors.blueGrey
+                        ),
+                      ),
+                      Text(
+                        meal.name,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18,
+                          color: Colors.black
+                        ),
+                      ),
+                      Text(
+                        "${meal.kiloCaloriesBurnt} kcal",
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                          color: Colors.blueGrey
+                        ),
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.access_time,
+                            size: 15,
+                            color: Colors.black12,
+                          ),
+                          SizedBox(
+                            width: 4,
+                          ),
+                          Text(
+                              "${meal.timeTaken} min",
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 14,
+                                color: Colors.blueGrey,
+                              ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 16),
+                    ],
+                  ),
                 ),
             ),
           ],
