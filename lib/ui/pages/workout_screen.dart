@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:darynfit/model/upper_body_workout.dart';
 
 class WorkoutScreen extends StatelessWidget {
   @override
@@ -100,7 +101,7 @@ class WorkoutScreen extends StatelessWidget {
               for (int i = 0;i<upperBody.length;i++)
                 Column(
                   children: <Widget>[
-                    for (int j = 0;j<upperBody[i].lenght;j++)
+                    for (int j = 0;j<upperBody[i].length;j++)
                       ListTile(
                         leading: Container(
                           decoration: BoxDecoration(
@@ -126,7 +127,7 @@ class WorkoutScreen extends StatelessWidget {
                           ),
                         ),
                         subtitle: Text(
-                          upperBody[i][j].instructions,
+                          upperBody[i][j].instruction,
                           style: TextStyle(
                             color: Colors.white70,
                             fontSize: 14,

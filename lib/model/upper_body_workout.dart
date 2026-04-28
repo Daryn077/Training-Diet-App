@@ -1,7 +1,13 @@
 class UpperBodyWorkout {
-  final String imagePath, name, instruction;
+  final String imagePath;
+  final String name;
+  final String instruction;
 
-  UpperBodyWorkout({this.imagePath, this.name, this.instruction});
+  UpperBodyWorkout({
+    required this.imagePath,
+    required this.name,
+    required this.instruction,
+  });
 }
 
 final upperBody = [
